@@ -310,3 +310,15 @@ git@github.com:liutianming0703/repo.git
 拉取 命令：git pull [remote name] [branch name]
 拉取指令就是将远端仓库的修改拉到本地并自动进行合并，等同于fetch+merge
 如果不指定远端名称和分支名，则抓取所有并更新当前分支。
+
+##### git pull = git fetch  +   git merge
+
+### 解决合并冲突
+
+在一段时间，A、B用户修改了同一个文件，且修改了同一行位置的代码，此时会发生合并冲突。
+A用户在本地修改代码后优先推送到远程仓库，此时B用户在本地修订代码，提交到本地仓库后，也需要
+推送到远程仓库，此时B用户晚于A用户，故需要先拉取远程仓库的提交，经过合并后才能推送到远端分
+支,如下图所示。
+
+![image-20260316162848617](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316162848617.png)
+
