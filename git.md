@@ -51,6 +51,21 @@ options
 
 --graph 以图的形式显示
 
+###### git-log的配置
+
+1. 打开用户目录，创建.bashrc文件
+部分windows系统不允许用户创建点号开头的文件，可以打开gitBash,执行 touch ~/.bashrc
+
+![image-20260316155816560](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316155816560.png)
+
+2. 在.bashrc文件中输入如下内容：
+
+![image-20260316155835346](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316155835346.png)
+
+3. 打开gitBash，执行 source ~/.bashrc
+
+![image-20260316155853133](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316155853133.png)
+
 ###### 3.3.5、版本回退
 
 作用：版本切换
@@ -211,9 +226,87 @@ Hi liutianming0703! You've successfully authenticated, but GitHub does not provi
 
 liutianming@PeterLiuMacBook-Air ~ % 
 
-### 新建仓库
+### 远程仓库
+
+#### 新建远程仓库仓库
 
 git@github.com:liutianming0703/repo.git
 
 ![image-20260316142401463](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316142401463.png)
 
+#### 添加远程仓库
+
+ git remote add origin git@github.com:liutianming0703/repo.git
+
+![image-20260316145100766](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316145100766.png)
+
+
+
+ #### git remote add <远端名称> <仓库路径>
+远端名称，默认是origin，取决于远端服务器设置
+仓库路径，从远端服务器获取此URL
+
+git remote add origin git@github.com:liutianming0703/repo.git
+
+#### 查看远程仓库
+命令：git remote
+
+
+
+#### 推送到远程仓库
+命令：git push [-f] [--set-upstream] [远端名称 [本地分支名][:远端分支名] ]
+如果远程分支名和本地分支名称相同，则可以只写本地分支
+git push origin master
+-f 表示强制覆盖
+--set-upstream 推送到远端的同时并且建立起和远端分支的关联关系。
+git push --set-upstream origin master
+如果当前分支已经和远端分支关联，则可以省略分支名和远端名。
+git push 将master分支推送到已关联的远端分支。
+
+
+
+git push --set-upstream origin master:master    只需要第一次执行
+
+git push     之后执行这个
+
+![image-20260316151733314](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316151733314.png)
+
+git branch -vv    显示对应关系
+
+![image-20260316151427071](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316151427071.png)
+
+图代表本地的master和远程origin处的master对应。
+
+
+
+![image-20260316152317845](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316152317845.png)
+
+#### github SSH地址：
+
+git@github.com:liutianming0703/repo.git
+
+#### 从远程仓库克隆
+
+如果已经有一个远端仓库，我们可以直接clone到本地。
+命令: git clone <仓库路径> [本地目录]
+本地目录可以省略，会自动生成一个目录
+
+#### git branch -a：查看远程分支
+
+![image-20260316154248268](https://cdn.jsdelivr.net/gh/liutianming0703/note01@main/img/image-20260316154248268.png)
+
+#### 从远程仓库中抓取和拉取
+
+##### 抓取
+
+远程分支和本地的分支一样，我们可以进行merge操作，只是需要先把远端仓库里的更新都下载到本
+地，再进行操作。
+抓取 命令：git fetch [remote name] [branch name]
+抓取指令就是将仓库里的更新都抓取到本地，不会进行合并
+如果不指定远端名称和分支名，则抓取所有分支。
+
+##### 拉取
+
+拉取 命令：git pull [remote name] [branch name]
+拉取指令就是将远端仓库的修改拉到本地并自动进行合并，等同于fetch+merge
+如果不指定远端名称和分支名，则抓取所有并更新当前分支。
